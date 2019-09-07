@@ -1,5 +1,6 @@
 var mangoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
+var crypto = require('crypto');
 
 var UserSchema = new mongoose.Schema({
   username: {
