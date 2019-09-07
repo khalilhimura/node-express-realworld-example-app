@@ -1,9 +1,11 @@
 var mangoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var UserSchema = new mongoose.Schema({
   username: {
     type: String,
     lowercase: true,
+    unique: true,
     required: [true, "can't be blank"],
     match: [/^[a-zA-Z0-9]+$/, 'is invalid'], // alphanumerical regex
     index: true
@@ -11,6 +13,7 @@ var UserSchema = new mongoose.Schema({
   email: {
     type: String,
     lowercase: true,
+    unique: true,
     required: [true, "can't be blank"],
     match: [/\S+@\S+\.\S+/, 'is invalid'], // email regex
     index: true
@@ -20,5 +23,7 @@ var UserSchema = new mongoose.Schema({
   hash: String,
   salt: String,
 }, {timestamp: true});
+
+UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
 mongoose.model('User', UserSchema);
