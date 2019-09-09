@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var slug = require('slug') // package we'll use to auto create URL slugs
+var User = mongoose.model('User');
 
 var ArticleSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
@@ -39,6 +40,16 @@ ArticleSchema.methods.toJSONFor = function(user){
     favoritesCount: this.favoritesCount,
     author: this.author.toProfileJSONFor(user)
   };
+};
+
+ArticleSchema.methods.updateFavoriteCount = function(){
+  var article = this;
+
+  return User.count({favorites: {$in: [article._id]}}).then(function(count){
+    article.favoritesCount = count;
+
+    return article.save();
+  });
 };
 
 mongoose.model('Article', ArticleSchema);
