@@ -29,7 +29,7 @@ ArticleSchema.pre('validate', function(next){
 ArticleSchema.methods.toJSONFor = function(user){
   return {
     slug: this.slug,
-    title: this.slug,
+    title: this.title,
     description: this.description,
     body: this.body,
     createdAt: this.createdAt,
