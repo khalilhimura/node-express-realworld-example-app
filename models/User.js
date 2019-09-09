@@ -71,6 +71,14 @@ UserSchema.methods.toProfileJSONFor = function(user){
     image: this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg',
     following: false // we'll implement following functionality in a few chapters
   }
+};
+
+UserSchema.methods.favorite = function(id){
+  if(this.favorites.indexOf(id) === -1){
+    this.favorites.push(id);
+  }
+
+  return this.save();
 }
 
 mongoose.model('User', UserSchema);
