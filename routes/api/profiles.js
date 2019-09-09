@@ -9,7 +9,7 @@ router.param('username', function(req, res, next, username){
 
     req.profile = user;
 
-    return.next();
+    return next();
   }).catch(next);
 });
 
