@@ -79,6 +79,11 @@ UserSchema.methods.favorite = function(id){
   }
 
   return this.save();
-}
+};
+
+UserSchema.methods.unfavorite = function(id){
+  this.favorites.remove(id);
+  return this.save();
+};
 
 mongoose.model('User', UserSchema);
