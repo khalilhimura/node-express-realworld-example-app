@@ -23,6 +23,7 @@ var UserSchema = new mongoose.Schema({
   },
   bio: String,
   image: String,
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
   hash: String,
   salt: String,
 }, {timestamp: true});
