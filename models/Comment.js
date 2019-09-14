@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var CommentSchema = new mongoose.Schema({
   body: String,
-  author: { type: mongoose.schema.Types.ObjectId, ref: 'User' },
-  article: { type: mongoose.schema.Types.ObjectId, ref: 'Article' }
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  article: { type: mongoose.Schema.Types.ObjectId, ref: 'Article' }
 }, {timestamps: true});
 
 // Requires population of author
