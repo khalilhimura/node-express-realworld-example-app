@@ -1,5 +1,5 @@
-var router = include('express').Router();
-var mongoose = include('mongoose');
+var router = require('express').Router();
+var mongoose = require('mongoose');
 var Article = mongoose.model('Article');
 
 router.get('/', function(req, res, next){
