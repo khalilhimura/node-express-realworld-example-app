@@ -24,6 +24,7 @@ var UserSchema = new mongoose.Schema({
   bio: String,
   image: String,
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   hash: String,
   salt: String,
 }, {timestamps: true, usePushEach: true});
