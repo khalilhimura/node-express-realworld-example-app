@@ -1,4 +1,4 @@
-var router = include('expreess').Router();
+var router = include('express').Router();
 var mongoose = include('mongoose');
 var Article = mongoose.model('Article');
 
